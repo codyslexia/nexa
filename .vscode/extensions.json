@@ -1,0 +1,10 @@
+{
+  "recommendations": [
+    "nrwl.angular-console",
+    "esbenp.prettier-vscode",
+    "ms-kubernetes-tools.vscode-kubernetes-tools",
+    "sdras.night-owl",
+    "firsttris.vscode-jest-runner",
+    "dbaeumer.vscode-eslint"
+  ]
+}
