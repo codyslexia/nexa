@@ -1,0 +1,18 @@
+# 
+# .eslintignore
+# use this file to ignore files and directories in eslint
+# see https://eslint.org/docs/user-guide/configuring#ignoring-files-and-directories
+# 
+
+# compiled output
+dist
+tmp
+/out-tsc
+/coverage
+
+# dependencies
+node_modules
+.yarn/cache
+
+# next.js
+.next

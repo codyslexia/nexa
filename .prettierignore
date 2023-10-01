@@ -1,0 +1,14 @@
+# 
+# .prettierignore
+# use this file to ignore files and folders from prettier
+# see https://prettier.io/docs/en/ignore.html
+# 
+
+# compiled output
+dist
+tmp
+/out-tsc
+/coverage
+
+# misc
+CODEOWNERS

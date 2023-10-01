@@ -1,0 +1,63 @@
+# 
+# .gitignore
+# use this file to ignore files and directories in git
+# see https://help.github.com/articles/ignoring-files
+# 
+
+# compiled output
+dist
+tmp
+/out-tsc
+/coverage
+
+# dependencies
+node_modules
+.yarn/cache
+
+# next.js
+.next
+
+# dev
+.env
+
+# devcontainer
+.pnpm-store
+.nx/cache
+.cargo/.package-cache
+.cargo/bin/
+.cargo/env
+.cargo/registry/
+.local/
+.npm/
+.profile
+.rustup/
+
+# ide
+/.idea
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# vscode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# misc
+/.sass-cache
+/connect.lock
+/coverage
+/libpeerconnection.log
+npm-debug.log
+yarn-error.log
+testem.log
+/typings
+
+# system
+.DS_Store
+Thumbs.db
