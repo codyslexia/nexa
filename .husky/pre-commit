@@ -1,0 +1,3 @@
+#!/usr/bin/env sh
+
+pnpm nx run-many --target=affected --all --base=origin/main --parallel --maxParallel=4
