@@ -1,0 +1,19 @@
+#
+# This TOML configuration file is used to specify build options for Rust projects.
+# See https://doc.rust-lang.org/cargo/reference/config.html for more information.
+#
+
+# apply to all build targets
+[build]
+target-dir = 'dist/target'
+
+# apply to release builds only
+[target.x86_64-unknown-linux-musl]
+# disables the use of the C runtime library, which can result in smaller binary sizes and faster startup times
+rustflags = ["-C", "target-feature=-crt-static"]
+
+[target.aarch64-unknown-linux-musl]
+# necessary because the default linker may not be compatible with the target architecture
+linker = "aarch64-linux-musl-gcc"
+# disables the use of the C runtime library
+rustflags = ["-C", "target-feature=-crt-static"]

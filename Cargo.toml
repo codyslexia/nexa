@@ -1,0 +1,5 @@
+[workspace]
+members = ['apps/rustapi']
+
+[profile.release]
+lto = true
