@@ -1,0 +1,30 @@
+# 
+# .editorconfig
+# use this file to keep the coding style consistent across the project
+# see http://editorconfig.org
+# 
+
+# top-most .editorconfig file
+root = true
+
+# unix-style newlines with a newline ending every file
+[*]
+charset = utf-8
+end_of_line = lf
+insert_final_newline = true
+indent_size = 2
+indent_style = space
+format_on_save = true
+trim_trailing_whitespace = true
+
+[*.md]
+max_line_length = off
+trim_trailing_whitespace = false
+
+[*.{js,ts,jsx,tsx}]
+indent_size = 2
+indent_style = space
+
+[package.json]
+indent_size = 2
+indent_style = space
