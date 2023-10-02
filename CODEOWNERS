@@ -1,0 +1,34 @@
+# if not covered below, default to @moatorres
+* @moatorres
+/e2e/**/* @moatorres
+/plugins/**/* @moatorres
+/scripts/**/* @moatorres
+/tools/**/* @moatorres
+/apps/**/* @moatorres @codyslexia/nexa-core-reviewers
+/libs/**/* @moatorres @codyslexia/nexa-core-reviewers
+package.json @codyslexia/nexa-core-reviewers
+pnpm-lock.yaml @codyslexia/nexa-core-reviewers
+
+# docs
+/docs @codyslexia/nexa-docs-reviewers
+
+## iac
+/iac/* @codyslexia/nexa-iac-reviewers
+
+# scripts
+/scripts/* @codyslexia/nexa-pipelines-reviewers @moatorres
+
+# ci
+/.circleci/** @codyslexia/nexa-pipelines-reviewers
+/.github/** @codyslexia/nexa-pipelines-reviewers
+/.husky/** @codyslexia/nexa-pipelines-reviewers
+
+# misc
+/CONTRIBUTING.md @moatorres
+/CODE_OF_CONDUCT.md @moatorres
+/CODEOWNERS @moatorres
+
+# global config files
+project.json @moatorres
+jest.config.ts @moatorres
+jest.preset.js @moatorres
