@@ -1,13 +1,11 @@
 {
+  "$schema": "./node_modules/nx/schemas/nx-schema.json",
   "workspaceLayout": {
     "appsDir": "apps",
     "libsDir": "libs"
   },
   "affected": {
     "defaultBase": "main"
-  },
-  "implicitDependencies": {
-    "go.mod": "*"
   },
   "tasksRunnerOptions": {
     "default": {
@@ -47,7 +45,7 @@
       "!{projectRoot}/.eslintrc.json",
       "!{projectRoot}/eslint.config.js"
     ],
-    "sharedGlobals": []
+    "sharedGlobals": ["{workspaceRoot}/go.mod"]
   },
   "generators": {
     "@nx/react": {
