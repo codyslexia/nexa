@@ -1,7 +1,7 @@
 import './global.css'
 
 export const metadata = {
-  title: 'Nexa – Your Private, Self-Sustained Digital Workspace',
+  title: 'Docs – Nexa Workspace',
 }
 
 interface Props {
