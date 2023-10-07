@@ -3,12 +3,11 @@
 /**
  * @fileoverview Validates git commit messages.
  * @module scripts/commit-lint
- * @see 
+ * @see
  */
-// eslint-disable-next-line @typescript-eslint/no-var-requires
 const { types, scopes } = require('./commitizen.js')
 
-console.log('🐈 Validating git commit message')
+console.log('🐋 Validating %cgit commit%c message', 'color: white', 'color:default')
 
 const gitMessage = require('child_process').execSync('git log -1 --no-merges').toString().trim()
 const allowedTypes = types.map((type) => type.value).join('|')
@@ -20,7 +19,7 @@ const matchRelease = /Release/gi.test(gitMessage)
 const exitCode = +!(matchRelease || matchRevert || matchCommit)
 
 if (exitCode === 0) {
-  console.log('✅ Commit Accepted')
+  console.log('%c✔%c Commit Accepted\n', 'color: green', 'color: default')
 }
 
 if (exitCode !== 0) {

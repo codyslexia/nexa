@@ -32,7 +32,7 @@ function checkLockFiles() {
   return errors
 }
 
-console.log('🔒 Validating lock files\n')
+console.log('🐋 Validating %clock%c files', 'color: white', 'color:default')
 
 const invalid = checkLockFiles()
 
@@ -40,6 +40,6 @@ if (invalid.length > 0) {
   invalid.forEach((e) => console.log(e))
   process.exit(1)
 } else {
-  console.log('✅ Lock file is valid\n')
+  console.log('%c✔%c Lock file is valid\n', 'color: green', 'color: default')
   process.exit(0)
 }
