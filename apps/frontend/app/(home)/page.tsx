@@ -1,9 +1,24 @@
 import React from 'react'
+import Image from 'next/image'
 
 export default function Home() {
   return (
-    <div className="nexa">
-      <a href="https://github.com/codyslexia/nexa">codyslexia/nexa</a>
-    </div>
+    <main className="main colorful">
+      <div className="card">
+        <Image
+          style={{ alignSelf: 'center' }}
+          alt="Nexa"
+          width={100}
+          height={100}
+          src="/logo.png"
+        />
+        <span className="title">Nexa</span>
+        <p>Your Private, Self-Sustained Digital Workspace</p>
+        <br />
+        <small>
+          Powered by <b>Vercel</b>
+        </small>
+      </div>
+    </main>
   )
 }
