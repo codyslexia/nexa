@@ -6,6 +6,9 @@ on:
       - main
   pull_request:
 
+env:
+  NEXA_DOCS_URL: $NEXA_DOCS_URL
+
 jobs:
   main:
     name: Nx Cloud - Main Job

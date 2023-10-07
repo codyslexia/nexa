@@ -4,7 +4,7 @@ import '../styles/global.css'
 import { inter } from '../styles/fonts'
 import { Providers } from './providers'
 
-const image = 'https://codyslexia.com/thumbnail.png'
+const image = 'https://nexa.codyslexia.com/thumbnail.png'
 const title = 'Nexa – Your Private, Self-Sustained Digital Workspace'
 const description =
   'Nexa is a full-stack Next.js app with multi-tenancy and custom domain support. Built with Next.js App Router, Vercel Postgres and the Vercel Domains API.'
