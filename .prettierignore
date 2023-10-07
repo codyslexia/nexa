@@ -14,3 +14,4 @@ tmp
 CODEOWNERS
 .vercelignore
 pnpm-lock.yaml
+.github/ISSUE_TEMPLATE/config.yaml
