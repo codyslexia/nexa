@@ -12,7 +12,7 @@ const description =
 export const metadata: Metadata = {
   title,
   description,
-  icons: ['https://codyslexia.com/favicon.ico'],
+  icons: ['https://nexa.codyslexia.com/favicon.ico'],
   openGraph: {
     title,
     description,
@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     images: [image],
     creator: '@codyslexia',
   },
-  metadataBase: new URL('https://codyslexia.com'),
+  metadataBase: new URL('https://nexa.codyslexia.com'),
 }
 
 interface Props {
