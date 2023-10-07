@@ -1,0 +1,10 @@
+#
+# .vercelignore
+# use this file to ignore files and folders from being uploaded to Vercel
+# see https://vercel.com/docs/deployments/vercel-ignore
+#
+
+/*
+!docs
+!package.json
+!pnpm-lock.yaml
