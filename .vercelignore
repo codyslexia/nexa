@@ -7,6 +7,7 @@
 /*
 !docs
 !scripts
-!frontend
+!apps/frontend
 !package.json
 !pnpm-lock.yaml
+!tsconfig.base.json
