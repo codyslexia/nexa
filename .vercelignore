@@ -11,3 +11,5 @@
 !package.json
 !pnpm-lock.yaml
 !tsconfig.base.json
+!dist/apps/docs
+!dist/apps/frontend
