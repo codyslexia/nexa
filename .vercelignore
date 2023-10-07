@@ -4,12 +4,12 @@
 # see https://vercel.com/docs/deployments/vercel-ignore
 #
 
-/*
-!docs
-!scripts
-!apps/frontend
-!package.json
-!pnpm-lock.yaml
-!tsconfig.base.json
-!dist/apps/docs
-!dist/apps/frontend
+# /*
+# !docs
+# !scripts
+# !apps/frontend
+# !package.json
+# !pnpm-lock.yaml
+# !tsconfig.base.json
+# !dist/apps/docs
+# !dist/apps/frontend
