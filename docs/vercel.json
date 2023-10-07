@@ -1,0 +1,8 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": "nextjs",
+  "ignoreCommand": "git diff --quiet HEADˆ HEAD ./",
+  "buildCommand": "npx nx build docs --prod",
+  "outputDirectory": "dist/docs/.next",
+  "installCommand": "amazon-linux-extras install golang1.11 && pnpm install"
+}

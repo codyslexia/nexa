@@ -16,28 +16,16 @@
         "name": "next"
       }
     ],
-    "types": [
-      "jest",
-      "node"
-    ]
+    "types": ["jest", "node"]
   },
   "include": [
     "**/*.ts",
     "**/*.tsx",
     "**/*.js",
     "**/*.jsx",
-    "../src/frontend/.next/types/**/*.ts",
-    "../dist/src/frontend/.next/types/**/*.ts",
     "next-env.d.ts",
-    "../dist/apps/frontend/.next/types/**/*.ts",
-    "../apps/frontend/.next/types/**/*.ts",
-    "../dist/docs/.next/types/**/*.ts",
-    "../docs/.next/types/**/*.ts"
+    "../docs/.next/types/**/*.ts",
+    "../dist/docs/.next/types/**/*.ts"
   ],
-  "exclude": [
-    "node_modules",
-    "jest.config.ts",
-    "src/**/*.spec.ts",
-    "src/**/*.test.ts"
-  ]
+  "exclude": ["node_modules", "jest.config.ts", "src/**/*.spec.ts", "src/**/*.test.ts"]
 }
