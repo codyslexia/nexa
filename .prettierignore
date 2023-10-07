@@ -13,3 +13,4 @@ tmp
 # misc
 CODEOWNERS
 .vercelignore
+pnpm-lock.yaml
