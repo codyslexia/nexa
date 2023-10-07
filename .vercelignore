@@ -4,7 +4,9 @@
 # see https://vercel.com/docs/deployments/vercel-ignore
 #
 
-/*
-!docs
-!package.json
-!pnpm-lock.yaml
+# /*
+# !docs
+# !package.json
+# !pnpm-lock.yaml
+
+/apps
