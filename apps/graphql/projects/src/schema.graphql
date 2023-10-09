@@ -1,0 +1,24 @@
+extend schema @link(url: "https://specs.apollo.dev/federation/v2.0", import: ["@key"]) {
+  query: Query
+  mutation: Mutation
+}
+
+type Query {
+  "The full list of projects available to the current user"
+  projects: [Project]
+}
+
+type Mutation {
+  "Create a new project"
+  createProject(email: String): Project
+}
+
+type Project @key(fields: "id") {
+  id: ID!
+  "The id of the user who owns this project"
+  userId: ID!
+  "The kind of project this is"
+  kind: String
+  "The environment this project is running in"
+  environment: String
+}

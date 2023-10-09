@@ -15,8 +15,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@core/node": ["libs/core/node/src/index.ts"],
-      "@core/prisma": ["libs/core/prisma/src/index.ts"]
+      "@core/prisma": ["libs/core/prisma/src/index.ts"],
+      "@core/utils": ["libs/core/utils/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

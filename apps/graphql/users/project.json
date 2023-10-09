@@ -1,0 +1,97 @@
+{
+  "name": "graphql-users",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/graphql/users/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nx/esbuild:esbuild",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "platform": "node",
+        "outputPath": "dist/apps/graphql/users",
+        "format": ["cjs"],
+        "bundle": false,
+        "main": "apps/graphql/users/src/main.ts",
+        "tsConfig": "apps/graphql/users/tsconfig.app.json",
+        "assets": ["apps/graphql/users/src/assets"],
+        "generatePackageJson": true,
+        "esbuildOptions": {
+          "sourcemap": true,
+          "outExtension": {
+            ".js": ".js"
+          }
+        }
+      },
+      "configurations": {
+        "development": {},
+        "production": {
+          "generateLockfile": true,
+          "esbuildOptions": {
+            "sourcemap": false,
+            "outExtension": {
+              ".js": ".js"
+            }
+          }
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nx/js:node",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "graphql-users:build"
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "graphql-users:build:development"
+        },
+        "production": {
+          "buildTarget": "graphql-users:build:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/graphql/users/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "apps/graphql/users/jest.config.ts",
+        "passWithNoTests": true
+      },
+      "configurations": {
+        "ci": {
+          "ci": true,
+          "codeCoverage": true
+        }
+      }
+    },
+    "publish": {
+      "executor": "nx:run-commands",
+      "defaultConfiguration": "development",
+      "options": {
+        "command": "rover subgraph publish --name {args.name} --schema {projectRoot}/src/schema.graphql {args.graph}"
+      },
+      "configurations": {
+        "development": {
+          "args": "--name users --graph nexa@dev"
+        },
+        "production": {
+          "args": "--name users --graph nexa@prod"
+        }
+      }
+    },
+    "docker-build": {
+      "dependsOn": ["build"],
+      "command": "docker build -f apps/graphql/users/Dockerfile . -t ghcr.io/codyslexia/nexa-graphql-users"
+    }
+  },
+  "tags": ["type:app", "kind:graphql"]
+}

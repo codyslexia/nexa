@@ -1,0 +1,54 @@
+federation_version: =2.5.4
+
+subgraphs:
+  users:
+    routing_url: http://localhost:4001/
+    schema:
+      base: .
+      file: ../../../users/src/schema.graphql
+      graphref: nexa@dev
+      subgraph: users
+      subgraph_url: http://localhost:4001/
+    request:
+      - insert:
+          name: 'Router-Authorization'
+          value: '${env.USERS_SUBGRAPH_SECRET}'
+
+  projects:
+    routing_url: http://localhost:4002/
+    schema:
+      base: .
+      file: ../../../projects/src/schema.graphql
+      graphref: nexa@dev
+      subgraph: projects
+      subgraph_url: http://localhost:4002/
+    request:
+      - insert:
+          name: 'Router-Authorization'
+          value: '${env.PROJECTS_SUBGRAPH_SECRET}'
+
+headers:
+  all:
+    request:
+      - propagate:
+        named: 'Router-Authorization'
+  subgraphs:
+    users:
+      request:
+        - insert:
+            name: 'Router-Authorization'
+            value: '${env.USERS_SUBGRAPH_SECRET}'
+    projects:
+      request:
+        - insert:
+            name: 'Router-Authorization'
+            value: '${env.PROJECTS_SUBGRAPH_SECRET}'
+
+cors:
+  allow_any_origin: false
+  origins:
+    - https://studio.apollographql.com
+    - https://nexa.codyslexia.com
+    - http://localhost:4000
+    - http://localhost:4001
+    - http://localhost:4002
