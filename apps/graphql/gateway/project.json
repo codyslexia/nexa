@@ -1,0 +1,149 @@
+{
+  "name": "graphql-gateway",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/graphql/gateway/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nx/esbuild:esbuild",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "platform": "node",
+        "outputPath": "dist/apps/graphql/gateway",
+        "format": ["cjs"],
+        "bundle": false,
+        "main": "apps/graphql/gateway/src/main.ts",
+        "tsConfig": "apps/graphql/gateway/tsconfig.app.json",
+        "assets": ["apps/graphql/gateway/src/assets"],
+        "generatePackageJson": true,
+        "esbuildOptions": {
+          "sourcemap": true,
+          "outExtension": {
+            ".js": ".js"
+          }
+        }
+      },
+      "configurations": {
+        "development": {},
+        "production": {
+          "generateLockfile": true,
+          "esbuildOptions": {
+            "sourcemap": false,
+            "outExtension": {
+              ".js": ".js"
+            }
+          }
+        }
+      }
+    },
+    "serve": {
+      "executor": "nx:run-commands",
+      "defaultConfiguration": "development",
+      "dependsOn": ["prepare", "compose"],
+      "options": {
+        "parallel": true,
+        "buildTarget": "graphql-gateway:build"
+      },
+      "configurations": {
+        "subgraphs": {
+          "commands": [
+            { "command": "nx serve graphql-users", "color": "blue" },
+            { "command": "nx serve graphql-projects", "color": "green" }
+          ]
+        },
+        "development": {
+          "commands": [
+            "nx run graphql-gateway:subgraphs",
+            "tmp/router --dev --supergraph {projectRoot}/src/supergraph.graphql"
+          ]
+        },
+        "production": {
+          "commands": ["tmp/router --supergraph {projectRoot}/src/supergraph-production.graphql"]
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/graphql/gateway/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "apps/graphql/gateway/jest.config.ts",
+        "passWithNoTests": true
+      },
+      "configurations": {
+        "ci": {
+          "ci": true,
+          "codeCoverage": true
+        }
+      }
+    },
+    "docker-build": {
+      "dependsOn": ["build"],
+      "command": "docker build -f apps/graphql/gateway/Dockerfile . -t ghcr.io/codyslexia/nexa-graphql-gateway:latest"
+    },
+    "local": {
+      "executor": "@nx/js:node",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "graphql-gateway:build"
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "graphql-gateway:build:development"
+        },
+        "production": {
+          "buildTarget": "graphql-gateway:build:production"
+        }
+      }
+    },
+    "serve-local": {
+      "executor": "nx:run-commands",
+      "dependsOn": ["prepare", "compose"],
+      "options": {
+        "parallel": true,
+        "buildTarget": "graphql-gateway:build",
+        "commands": ["nx run graphql-gateway:subgraphs", "nx run graphql-gateway:local"]
+      }
+    },
+    "subgraphs": {
+      "executor": "nx:run-commands",
+      "options": {
+        "parallel": true,
+        "commands": [
+          { "command": "nx serve graphql-users", "color": "blue" },
+          { "command": "nx serve graphql-projects", "color": "green" }
+        ]
+      }
+    },
+    "prepare": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": [
+          "node scripts/install-apollo-router.js",
+          "node scripts/install-apollo-rover.js"
+        ],
+        "parallel": true
+      }
+    },
+    "compose": {
+      "executor": "nx:run-commands",
+      "defaultConfiguration": "development",
+      "configurations": {
+        "development": {
+          "command": "rover supergraph compose --config {projectRoot}/src/config/supergraph.dev.yaml --output {projectRoot}/src/supergraph.graphql --elv2-license=accept"
+        },
+        "production": {
+          "command": "rover supergraph compose --config {projectRoot}/src/config/supergraph.prod.yaml --output {projectRoot}/src/supergraph-production.graphql --elv2-license=accept"
+        }
+      }
+    }
+  },
+  "tags": ["type:app", "kind:graphql"]
+}

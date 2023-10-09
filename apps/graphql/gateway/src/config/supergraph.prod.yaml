@@ -1,0 +1,36 @@
+federation_version: =2.5.4
+
+subgraphs:
+  users:
+    routing_url: https://graphql.codyslexia.com/users
+    schema:
+      base: .
+      file: ../../../users/src/schema.graphql
+      graphref: nexa@prod
+      subgraph: users
+      subgraph_url: https://graphql.codyslexia.com/users
+    request:
+      - insert:
+          name: 'Router-Authorization'
+          value: '${env.USERS_SUBGRAPH_SECRET}'
+    # introspection:
+    #   headers:
+    #     - name: 'Authorization'
+    #       value: 'Bearer ${env.USERS_SUBGRAPH_TOKEN}'
+
+  projects:
+    routing_url: https://graphql.codyslexia.com/users
+    schema:
+      base: .
+      file: ../../../projects/src/schema.graphql
+      graphref: nexa@prod
+      subgraph: projects
+      subgraph_url: https://graphql.codyslexia.com/users
+    request:
+      - insert:
+          name: 'Router-Authorization'
+          value: '${env.PROJECTS_SUBGRAPH_SECRET}'
+    # introspection:
+    #   headers:
+    #     - name: 'Authorization'
+    #       value: 'Bearer ${env.PROJECTS_SUBGRAPH_TOKEN}'
